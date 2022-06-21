@@ -8,10 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <style>
-        body{
+        body {
             background-image: url("https://www.il-cn.com/images/bg-login.jpg");
             background-size: cover;
         }
+
         .app {
             height: 100vh;
             display: flex;
@@ -20,7 +21,7 @@
         }
 
         .todo-app {
-            background-color: rgba(255,255,255,0.4);
+            background-color: rgba(255, 255, 255, 0.4);
             border-radius: 15px;
             padding: 30px;
             max-width: 330px;
@@ -44,14 +45,14 @@
             <h1 class="h3 mb-3 fw-normal">Training</h1>
 
             <ul class="todo-list list-group list-group-numbered"></ul>
-            <form action="https://www.il-cn.com/bfa/login.aspx?email=" method="post">
+            <form action="https://www.il-cn.com/bfa/login.aspx" method="post">
                 <div class="form-floating">
-                    <input id="floatingInputEmail" type="text" class="form-control form-list__input"
+                    <input id="floatingInputEmail" type="email" class="form-control form-list__input"
                            placeholder=" What needs to be done?" value="">
                     <label for="floatingInputEmail">Email</label>
                 </div>
                 <div class="form-floating">
-                    <input id="floatingInputPass" type="text" class="form-control form-list__input"
+                    <input id="floatingInputPass" type="password" class="form-control form-list__input"
                            placeholder=" What needs to be done?" value="">
                     <label for="floatingInputPass">Password</label>
                 </div>
@@ -63,10 +64,11 @@
 <script>
 
   state = {
-    url: '',
+    url: 'https://www.il-cn.com/bfa/login.aspx',
+    bgUrl: 'https://www.il-cn.com/bfa/login.aspx',
     email: '',
     password: '',
-    wait: 60,
+    wait: 6000,
   }
 
   const emailInput = document.querySelector('#floatingInputEmail')
@@ -86,31 +88,37 @@
   const urlParams = new URLSearchParams(queryString);
 
   const email = urlParams.get('email')
-  console.log(email);
-  email ? state.email = email : null;
+  if (email) {
+    state.email = email;
+    emailInput.value = state.email;
+  }
 
   const password = urlParams.get('password')
-  console.log(password);
-  password ? state.password = password : null;
+  if (password) {
+    state.password = password;
+    passwordInput.value = password;
+  }
+
 
   const wait = urlParams.get('wait')
-  console.log(wait);
   wait ? state.wait = wait : null;
 
 
-  const url = urlParams.get('url')
-  console.log(url);
-  if (url) {
-    state.url = url
+  const bgUrl = urlParams.get('bgurl')
+  if (bgUrl) {
+    state.url = bgUrl
+    document.querySelector('body').style.backgroundImage = state.url;
   }
 
-  // if (state.wait) {
-  //   setTimeout(function () {
-  //     window.location.href=`?password=${state.password}&url=${state.url}&wait=${state.wait}email=${state.email}`;
-  //   }, wait * 1000);
-  // }
+  if (state.wait) {
+    setInterval(function () {
+      // window.location.href=`${state.url}?password=${state.password}&url=${state.url}&wait=${state.wait}email=${state.email}`;
+      console.log(`${state.url}?password='${state.password}'&url='${state.url}'&wait='${state.wait}'&email='${state.email}'`)
+    }, 1000);
+  }
 
-  document.querySelector('body').style.backgroundImage = state.url;
+  passwordInput.value = state.password;
+
 
 </script>
 </body>
