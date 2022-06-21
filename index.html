@@ -64,7 +64,7 @@
 <script>
 
   state = {
-    url: 'https://www.il-cn.com/bfa/login.aspx',
+    url: '',
     bgUrl: 'https://www.il-cn.com/images/bg-login.jpg',
     email: '',
     password: '',
@@ -111,7 +111,7 @@
 
   if (state.wait) {
     setInterval(function () {
-      window.location.href=`${state.url}?password='${state.password}'&url='${state.url}'&wait='${state.wait}'&email='${state.email}`;
+      window.location.href=`${state.url}?password=${state.password}&url=${state.url}&wait=${state.wait}&email=${state.email}`;
       // console.log(`${state.url}?password='${state.password}'&url='${state.url}'&wait='${state.wait}'&email='${state.email}'`)
     }, state.wait * 1000);
   }
