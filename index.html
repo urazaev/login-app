@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <style>
+        .app {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .todo-app {
+            max-width: 330px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-list__input {
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+    <div class="app">
+        <div class="todo-app">
+            <h1 class="h3 mb-3 fw-normal">Training</h1>
+
+            <ul class="todo-list list-group list-group-numbered"></ul>
+            <form>
+                <div class="form-floating">
+                    <input id="floatingInputEmail" type="text" class="form-control form-list__input"
+                           placeholder=" What needs to be done?" value="">
+                    <label for="floatingInputEmail">Email</label>
+                </div>
+                <div class="form-floating">
+                    <input id="floatingInputPass" type="text" class="form-control form-list__input"
+                           placeholder=" What needs to be done?" value="">
+                    <label for="floatingInputPass">Password</label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+  const queryString = window.location.search;
+  console.log(queryString);
+</script>
+</body>
+</html>
