@@ -54,8 +54,54 @@
     </div>
 </div>
 <script>
+
+  state = {
+    url: '',
+    email: '',
+    password: '',
+    wait: 3,
+  }
+
+  const emailInput = document.querySelector('#floatingInputEmail')
+  const passwordInput = document.querySelector('#floatingInputPass')
+
+  emailInput.addEventListener('onChange', (evt) => {
+    state.email = evt.target.value;
+    console.log(evt.target.value)
+  })
+
+  passwordInput.addEventListener('onChange', (evt) => {
+    state.password = evt.target.value;
+    console.log(evt.target.value)
+  })
+
   const queryString = window.location.search;
+
   console.log(queryString);
+  const urlParams = new URLSearchParams(queryString);
+
+  const email = urlParams.get('email')
+  console.log(email);
+  email ? state.email = email : null;
+
+  const password = urlParams.get('password')
+  console.log(password);
+  password ? state.password = password : null;
+
+  const wait = urlParams.get('wait')
+  console.log(wait);
+  wait ? state.wait = wait : null;
+
+
+  const url = urlParams.get('url')
+  console.log(url);
+  wait ? state.url = url : null;
+  //
+  //
+  // emailInput.value = state.email;
+  // passwordInput.value = state.password;
+
+
 </script>
 </body>
 </html>
